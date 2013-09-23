@@ -5,6 +5,7 @@ public class Laser_script : MonoBehaviour {
 
 	// Use this for initialization
 	int speed=5;
+	public Transform shield;
 	void Start () {
 	
 	}
@@ -22,6 +23,8 @@ public class Laser_script : MonoBehaviour {
 		
 		if (col.gameObject.tag=="Enemy")
 		{
+			if((int)Random.Range(1.0f, 5.0f)==1)
+				Instantiate(shield, transform.position, Quaternion.identity);
 			Destroy(col.gameObject);
 			Destroy(gameObject);
 		}

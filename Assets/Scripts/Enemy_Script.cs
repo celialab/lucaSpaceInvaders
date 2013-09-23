@@ -11,7 +11,7 @@ public class Enemy_Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	transform.Translate(new Vector3(0,(-speed*Time.deltaTime ), 0));
+		transform.Translate(new Vector3(0,(-speed*Time.deltaTime ), 0));
 	}
 	
 	void OnCollisionEnter(Collision col)

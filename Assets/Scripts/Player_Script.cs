@@ -9,6 +9,23 @@ public class Player_Script : MonoBehaviour {
 	float fireRate=0.4f;
 	float nexshot=0.0f;
 	public Transform Laser_pref;
+	bool powerUp=false;
+	bool PowerUp
+	{
+		get{return powerUp;}
+		set
+		{
+			if(value)
+				renderer.material.mainTextureOffset=new Vector2(0,0);//verde
+			else
+				renderer.material.mainTextureOffset=new Vector2(0,0.5f);//no verde
+			powerUp=value;
+		}
+		
+	}
+	
+	
+	
 	// Use this for initialization
 	void Start () 
 	{	}	
@@ -55,9 +72,18 @@ public class Player_Script : MonoBehaviour {
 		
 		if(collision.gameObject.tag=="Enemy")
 		{
-			print("blajbesihvbsdv");
+			
 			Destroy(collision.gameObject);
-			Destroy(gameObject);
+			if(PowerUp==false)
+				Destroy(gameObject);
+			else
+				PowerUp=false;
+			
+		}
+		if(collision.gameObject.tag=="Shield")
+		{
+			Destroy(collision.gameObject);
+			PowerUp=true;
 		}
 	}
 	 void OnCollisionExit(Collision collisionInfo) 
